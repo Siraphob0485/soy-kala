@@ -12,7 +12,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug((await params).slug);
-  return { title: product?.name ?? "ไม่พบสินค้า", description: product?.description };
+  if (!product) notFound();
+  return {
+    title: product.madeToOrder ? `${product.name} รับผลิตตามออเดอร์` : product.name,
+    description: product.description,
+  };
 }
 
 export default async function ProductPage({ params }: Props) {

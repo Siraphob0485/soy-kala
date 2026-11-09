@@ -1,14 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/data/products";
+
+export const metadata: Metadata = {
+  title: "รับผลิตงานกะลามะพร้าวและของที่ระลึก นครนายก",
+  description: "ซอยกะลา นครนายก รับผลิตเต่ากะลา ถ้วยกะลา ของใช้และของที่ระลึกจากกะลามะพร้าว เน้นสั่งจำนวนมากและรับรายชิ้น ติดต่อสอบถามรูปแบบ ราคา และระยะเวลาผลิต",
+};
 
 export default function HomePage() {
   return (
     <>
       <section className="hero">
-        <p className="eyebrow">งานกะลามะพร้าว · ผลิตตามออเดอร์</p>
-        <h1>จากกะลาธรรมดา<br />สู่งานที่มีเรื่องราว</h1>
-        <p className="intro">ของใช้ ของตกแต่ง และของที่ระลึกจากกะลามะพร้าว<br />งานจากครอบครัวเรา ที่ตั้งใจทำตามออเดอร์ของคุณ</p>
+        <p className="eyebrow">ซอยกะลา · งานกะลามะพร้าวจากนครนายก</p>
+        <h1>รับผลิตงานกะลามะพร้าว<br />ของใช้และของที่ระลึก</h1>
+        <p className="intro">งานจากครอบครัวเรา ผลิตตามออเดอร์ เน้นสั่งจำนวนมากและรับรายชิ้น<br />เลือกแบบที่สนใจ แล้วคุยรายละเอียดให้เหมาะกับจำนวนที่คุณต้องการ</p>
         <div className="actions">
           <Link className="button" href="/products">เลือกชมสินค้า</Link>
           <Link className="button secondary" href="/how-to-order">วิธีสั่งทำ</Link>
@@ -19,8 +25,8 @@ export default function HomePage() {
         <div className="product-grid">{getProducts().slice(0, 3).map((product) => <ProductCard key={product.id} product={product} />)}</div>
       </section>
       <section className="callout">
-        <h2>มีแบบหรือจำนวนที่ต้องการในใจแล้ว?</h2>
-        <p>เลือกสินค้าที่สนใจ แล้วพูดคุยเรื่องรูปแบบ จำนวน ราคา และระยะเวลาผลิตกับเราก่อนสั่งทำ</p>
+        <h2>สั่งจำนวนมากหรือรายชิ้น คุยกับเราได้</h2>
+        <p>แจ้งชื่อสินค้า จำนวน และวันที่ต้องการใช้ เพื่อให้ร้านตรวจสอบราคาและระยะเวลาผลิตก่อนยืนยันการสั่งทำ</p>
         <Link href="/how-to-order">อ่านขั้นตอนการสั่งซื้อ →</Link>
       </section>
     </>
