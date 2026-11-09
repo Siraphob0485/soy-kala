@@ -42,3 +42,7 @@ next-env.d.ts
 
 # Local Sites publishing checkout
 /.site-deploy/
+
+# Local Cloudflare state
+/.wrangler/
+.dev.vars*

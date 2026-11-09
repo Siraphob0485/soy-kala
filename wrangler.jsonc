@@ -1,0 +1,8 @@
+{
+  // Deploy the Next.js static export, without an OpenNext server adapter.
+  "name": "soy-kala",
+  "compatibility_date": "2026-11-09",
+  "assets": {
+    "directory": "./out"
+  }
+}
