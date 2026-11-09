@@ -3,6 +3,7 @@ import ProductGallery from "@/components/ProductGallery";
 import { getProducts } from "@/data/products";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/products/" },
   title: "สินค้ากะลามะพร้าว ของใช้ ของตกแต่ง และของที่ระลึก",
   description: "รวมสินค้าจากกะลามะพร้าว ทั้งเต่ากะลา ถ้วยกะลา ที่วางสบู่ โคมไฟ และกระบวย เลือกดูตามหมวดหมู่และสอบถามรายละเอียดการสั่งผลิตกับร้าน",
 };

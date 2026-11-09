@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/data/products";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "รับผลิตงานกะลามะพร้าวและของที่ระลึก นครนายก",
   description: "ซอยกะลา นครนายก รับผลิตเต่ากะลา ถ้วยกะลา ของใช้และของที่ระลึกจากกะลามะพร้าว เน้นสั่งจำนวนมากและรับรายชิ้น ติดต่อสอบถามรูปแบบ ราคา และระยะเวลาผลิต",
 };

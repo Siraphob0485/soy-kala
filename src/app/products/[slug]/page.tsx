@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug((await params).slug);
   if (!product) notFound();
   return {
+    alternates: { canonical: `/products/${product.slug}/` },
     title: product.madeToOrder ? `${product.name} รับผลิตตามออเดอร์` : product.name,
     description: product.description,
   };

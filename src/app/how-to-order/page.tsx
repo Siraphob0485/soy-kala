@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/how-to-order/" },
   title: "วิธีสั่งผลิตงานกะลามะพร้าวและติดต่อร้าน",
   description: "ขั้นตอนสั่งทำสินค้ากะลามะพร้าว เลือกแบบ แจ้งจำนวน สอบถามราคาและระยะเวลาผลิต พร้อมช่องทางติดต่อร้านเพื่อยืนยันรายละเอียดก่อนสั่งทำ",
 };
