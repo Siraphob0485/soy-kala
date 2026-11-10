@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductImage from "@/components/ProductImage";
+import AddToQuote from "@/components/AddToQuote";
 import { getProducts, getProductBySlug } from "@/data/products";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -39,7 +40,8 @@ export default async function ProductPage({ params }: Props) {
             <dt>ขนาด</dt><dd>{product.dimensions ?? "สอบถามรายละเอียดกับร้าน"}</dd>
             <dt>ราคาและระยะเวลาผลิต</dt><dd>สอบถามตามรูปแบบและจำนวนที่ต้องการ</dd>
           </dl>
-          <Link href="/how-to-order#contact" className="button">ดูช่องทางสั่งทำ</Link>
+          <AddToQuote productId={product.id} name={product.name} />
+          <Link href="/how-to-order#contact">ดูช่องทางสั่งทำ</Link>
         </div>
       </div>
     </section>

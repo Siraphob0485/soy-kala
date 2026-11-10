@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
 import type { Product } from "@/types/product";
+import AddToQuote from "@/components/AddToQuote";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
@@ -14,6 +15,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className="text-link">ดูรายละเอียด →</span>
         </div>
       </Link>
+      <div className="card-actions"><AddToQuote productId={product.id} name={product.name} compact /></div>
     </article>
   );
 }
