@@ -8,7 +8,8 @@ URL หลัก: https://soy-kala.phonglehanon.workers.dev/
 - canonical ของแต่ละหน้าใช้ URL ตัวเอง มี trailing slash ตรงกับ static export
 - sitemap.xml สร้างจากหน้าหลัก 3 หน้าและข้อมูลสินค้าโดยอัตโนมัติ (ปัจจุบันรวม 8 URL)
 - robots.txt อนุญาตให้ crawler อ่านเว็บและระบุ sitemap
-- เตรียม googleSiteVerification ใน src/config/site.ts แต่ยังไม่ได้ใส่รหัสหรือยืนยัน Search Console
+- เพิ่มไฟล์ public/google4433851957e2d361.html ตามข้อมูลที่เจ้าของร้านให้ เพื่อยืนยัน Search Console แบบไฟล์ HTML (ยังต้องกดยืนยันในบัญชี Google)
+- googleSiteVerification ใน src/config/site.ts เว้นว่างไว้ เพราะใช้วิธีไฟล์ HTML
 
 ตรวจ URL หลัง Cloudflare deploy:
 
@@ -19,9 +20,9 @@ URL หลัก: https://soy-kala.phonglehanon.workers.dev/
 
 1. เข้าสู่ https://search.google.com/search-console ด้วยบัญชี Google ของเจ้าของร้าน
 2. เพิ่มพร็อพเพอร์ตี้แบบ URL prefix เป็น https://soy-kala.phonglehanon.workers.dev/
-3. เลือกวิธียืนยัน HTML tag แล้วคัดลอกแท็ก google-site-verification
-4. ใส่เฉพาะค่า content ใน siteConfig.googleSiteVerification (หรือส่งแท็กให้ผู้ช่วยใส่) ไม่ใช่รหัสผ่านหรือ OTP
-5. Build, commit และ push แล้วรอ Cloudflare deploy เวอร์ชันนั้น
+3. เลือกวิธียืนยันไฟล์ HTML ที่ Google ให้ชื่อ google4433851957e2d361.html
+4. ตรวจว่า https://soy-kala.phonglehanon.workers.dev/google4433851957e2d361.html แสดงข้อความ google-site-verification: google4433851957e2d361.html
+5. ไฟล์นี้อยู่ใน public/ ต้องเก็บไว้หลังยืนยันสำเร็จเพื่อให้ Google ตรวจซ้ำได้
 6. กลับไปกด Verify ใน Search Console
 7. เมนู Sitemaps: ส่ง sitemap.xml
 8. ใช้ URL Inspection ตรวจหน้าแรกและสินค้าหลัก แล้ว Request indexing หากระบบอนุญาต
