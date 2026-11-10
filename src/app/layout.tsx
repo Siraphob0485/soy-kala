@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import QuoteProvider from "@/components/QuoteProvider";
 import QuoteLink from "@/components/QuoteLink";
+import NavigationLink from "@/components/NavigationLink";
 import { getProducts } from "@/data/products";
 import "./globals.css";
 
@@ -24,10 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="site-header">
           <div className="container header-inner">
             <Link className="brand" href="/">{siteConfig.name}<small>งานจากกะลามะพร้าว</small></Link>
-            <nav aria-label="เมนูหลัก">
-              <Link href="/">หน้าแรก</Link>
-              <Link href="/products">สินค้า</Link>
-              <Link href="/how-to-order">วิธีสั่งซื้อ</Link>
+            <nav className="site-nav" aria-label="เมนูหลัก">
+              <NavigationLink href="/">หน้าแรก</NavigationLink>
+              <NavigationLink href="/products">สินค้า</NavigationLink>
+              <NavigationLink href="/how-to-order">วิธีสั่งซื้อ</NavigationLink>
               <QuoteLink />
             </nav>
           </div>

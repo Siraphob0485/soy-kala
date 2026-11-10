@@ -13,12 +13,16 @@ p { color: var(--muted); }
 .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
 main { min-height: 65vh; }
 .site-header { border-bottom: 1px solid var(--border); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; }
 .brand { font-size: 1.5rem; font-weight: bold; text-decoration: none; }
 .brand small { display: block; font-size: .7rem; font-weight: normal; color: var(--muted); }
-nav { display: flex; gap: 24px; flex-wrap: wrap; }
-nav a { text-decoration: none; }
-nav a:hover { text-decoration: underline; }
+.site-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.site-nav-link { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; padding: 10px 16px; border: 1px solid #b9bcae; border-radius: 8px; background: #fffdf8; color: var(--accent); font-size: .9rem; font-weight: bold; text-align: center; text-decoration: none; box-shadow: 0 2px 0 #dfd7ca; }
+.site-nav-link:hover { background: #e9ecdf; border-color: var(--accent); }
+.site-nav-link[data-active="true"] { background: var(--accent); border-color: var(--accent); color: white; box-shadow: 0 2px 0 #293c24; }
+.site-nav-link:active { transform: translateY(1px); box-shadow: none; }
+.site-nav-link .quote-count { flex-shrink: 0; margin-left: 0; }
+.site-nav-link[data-active="true"] .quote-count { background: white; color: var(--accent); }
 .hero { padding: 88px 0 72px; max-width: 850px; }
 .eyebrow { font-size: .8rem; font-weight: bold; color: var(--accent); letter-spacing: .04em; }
 .intro { font-size: 1.1rem; max-width: 680px; }
@@ -66,7 +70,8 @@ dd { margin: 0 0 16px; color: var(--muted); }
 @media (max-width: 640px) {
   .container { width: calc(100% - 32px); }
   .header-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
-  nav { gap: 20px; font-size: .9rem; }
+  .site-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 10px; }
+  .site-nav-link { min-height: 50px; padding: 10px; }
   .hero { padding-block: 48px; }
   .section { padding-block: 32px; }
   .product-grid, .product-detail { grid-template-columns: 1fr; }
