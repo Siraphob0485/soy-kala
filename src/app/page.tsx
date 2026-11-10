@@ -27,8 +27,12 @@ export default function HomePage() {
       </section>
       <section className="callout">
         <h2>สั่งจำนวนมากหรือรายชิ้น คุยกับเราได้</h2>
-        <p>แจ้งชื่อสินค้า จำนวน และวันที่ต้องการใช้ เพื่อให้ร้านตรวจสอบราคาและระยะเวลาผลิตก่อนยืนยันการสั่งทำ</p>
-        <Link href="/how-to-order">อ่านขั้นตอนการสั่งซื้อ →</Link>
+        <p>เลือกสินค้าได้หลายแบบ ระบุจำนวนและวันที่ต้องการใช้ แล้วคัดลอกรายการไปคุยกับร้านทาง LINE เพื่อสอบถามราคาและระยะเวลาผลิต</p>
+        <div className="actions">
+          <Link className="button" href="/quote">ดูรายการขอราคา</Link>
+          <Link className="button secondary" href="/how-to-order">อ่านขั้นตอนการสั่งซื้อ</Link>
+        </div>
+        <p className="quote-feedback"><Link href="/how-to-order/#faq">มีข้อสงสัย? อ่านคำถามที่พบบ่อยก่อนสั่งทำ →</Link></p>
       </section>
     </>
   );

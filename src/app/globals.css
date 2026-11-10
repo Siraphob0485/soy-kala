@@ -75,6 +75,18 @@ dd { margin: 0 0 16px; color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+.order-preparation { margin-block: 40px; padding: 28px; border: 1px solid var(--border); border-radius: 12px; }
+.order-checklist { padding-left: 24px; }
+.order-checklist li { padding-block: 5px; }
+.order-preparation > :last-child { margin-bottom: 0; }
+.order-faq { max-width: 850px; margin-block: 48px; scroll-margin-top: 24px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item summary { padding: 18px 8px; font-weight: bold; cursor: pointer; }
+.faq-item summary::marker { color: var(--accent); }
+.faq-item summary:focus-visible { outline: 3px solid #a75c26; outline-offset: 3px; border-radius: 4px; }
+.faq-item[open] summary { color: var(--accent); }
+.faq-item p { padding: 0 8px 8px; }
+
 /* รายการขอราคา */
 .product-card { display: flex; flex-direction: column; }
 .card-actions { padding: 0 24px 24px; }
