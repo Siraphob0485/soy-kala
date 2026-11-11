@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ProductImage from "@/components/ProductImage";
+import ProductPhotos from "@/components/ProductPhotos";
 import AddToQuote from "@/components/AddToQuote";
 import { getProducts, getProductBySlug } from "@/data/products";
 
@@ -28,10 +28,7 @@ export default async function ProductPage({ params }: Props) {
     <section className="section">
       <Link className="back-link" href="/products">← กลับไปดูสินค้าทั้งหมด</Link>
       <div className="product-detail">
-        <div>
-          <ProductImage src={product.images[0]} name={product.name} />
-          {product.images.slice(1).map((src, index) => <ProductImage key={`${src}-${index}`} src={src} name={`${product.name} มุมที่ ${index + 2}`} />)}
-        </div>
+        <ProductPhotos key={product.id} images={product.images} name={product.name} />
         <div>
           <p className="eyebrow">{product.category} · {product.id}</p>
           <h1>{product.name}</h1><p className="intro">{product.description}</p>

@@ -8,7 +8,7 @@ export const products: Product[] = [
     name: "เต่ากะลา",
     category: "ของที่ระลึก",
     description: "เต่าจากกะลามะพร้าวสำหรับตกแต่งหรือมอบเป็นของที่ระลึก สอบถามรูปแบบและจำนวนที่ต้องการได้",
-    images: ["/images/products/turtle/turtle.jpg"],
+    images: ["/images/products/turtle/turtle.jpg", "/images/products/turtle/turtle (2).jpg"],
     madeToOrder: true,
   },
   {

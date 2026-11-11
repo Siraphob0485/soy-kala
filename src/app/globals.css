@@ -55,6 +55,35 @@ main { min-height: 65vh; }
 .back-link { display: inline-block; margin-bottom: 32px; }
 .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 .product-detail .product-image { border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+.product-photos { min-width: 0; }
+.photo-open { display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 12px; background: #fffdf8; color: var(--accent); }
+.photo-preview { display: block; position: relative; aspect-ratio: 1; background: #ebe3d6; }
+.photo-preview img, .photo-thumbnail img, .photo-stage img { object-fit: contain; }
+.photo-open-label { display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 48px; padding: 8px 12px; font-weight: bold; }
+.photo-open-label > span { font-size: 1.5rem; }
+.photo-open:hover .photo-open-label { background: #e9ecdf; }
+.photo-thumbnails { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.photo-thumbnail { position: relative; width: 80px; height: 80px; border: 2px solid var(--border); border-radius: 8px; background: #ebe3d6; overflow: hidden; }
+.photo-thumbnail[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.photo-caption { margin: 12px 0 0; font-size: .85rem; }
+.photo-dialog { width: min(1100px, calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); padding: 0; border: 1px solid #68685e; border-radius: 14px; color: white; background: #20221e; overscroll-behavior: contain; }
+.photo-dialog::backdrop { background: rgb(0 0 0 / .82); }
+.photo-dialog-panel { padding: 16px; }
+.photo-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.photo-dialog-header h2 { font-size: 1.2rem; margin: 0; }
+.photo-control { min-width: 48px; min-height: 48px; padding: 8px 12px; border: 1px solid #8e9788; border-radius: 8px; background: #343d2e; color: white; }
+.photo-control:hover { background: #44583d; }
+.photo-control:focus-visible { outline-color: #f2ca88; }
+.photo-stage { position: relative; height: min(68dvh, 780px); min-height: 120px; touch-action: pan-y pinch-zoom; }
+.photo-dialog-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 12px; }
+.photo-dialog-controls p { margin: 0; color: white; white-space: nowrap; }
+.photo-dialog-hint { color: #d3d8ce; margin: 12px 0 0; font-size: .8rem; text-align: center; }
+@media (max-width: 640px) {
+  .photo-dialog-panel { padding: 12px; }
+  .photo-stage { height: 58dvh; }
+  .photo-dialog-controls { gap: 8px; }
+  .photo-control { padding: 8px 10px; font-size: .85rem; }
+}
 .badge { display: inline-block; background: #e9ecdf; color: var(--accent); padding: 5px 14px; border-radius: 50px; font-size: .85rem; }
 dl { margin-block: 28px; }
 dt { font-weight: bold; }
