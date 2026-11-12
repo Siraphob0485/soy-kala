@@ -34,7 +34,7 @@ export default async function ProductPage({ params }: Props) {
           <h1>{product.name}</h1><p className="intro">{product.description}</p>
           {product.madeToOrder && <span className="badge">ผลิตตามออเดอร์</span>}
           <dl>
-            <dt>ขนาด</dt><dd>{product.dimensions ?? "สอบถามรายละเอียดกับร้าน"}</dd>
+            <dt>ขนาด</dt><dd>{product.dimensions || "สอบถามรายละเอียดกับร้าน"}</dd>
             <dt>ราคาและระยะเวลาผลิต</dt><dd>สอบถามตามรูปแบบและจำนวนที่ต้องการ</dd>
           </dl>
           <AddToQuote productId={product.id} name={product.name} />

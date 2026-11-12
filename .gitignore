@@ -46,3 +46,9 @@ next-env.d.ts
 # Local Cloudflare state
 /.wrangler/
 .dev.vars*
+
+# CMS build snapshots (recreated by prebuild/predev)
+/src/data/catalog.generated.json
+/public/catalog-version.json
+/.cms-test/
+!.env.example

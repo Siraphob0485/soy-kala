@@ -4,7 +4,7 @@
 
 ## เริ่มใช้งาน
 
-ใช้ Node.js 20.9 ขึ้นไป (ตอนสร้างใช้ Node.js 22)
+ใช้ Node.js 22 ขึ้นไป สำหรับ Next.js และเครื่องมือ Cloudflare
 
 ```powershell
 cd O:\NEXT\soy-kala
@@ -40,7 +40,7 @@ src/
 │   └── QuoteBuilder.tsx           แก้รายการและคัดลอกข้อความไป LINE
 ├── lib/quote.ts                  ตรวจข้อมูลและสร้างข้อความขอราคา
 ├── config/site.ts                ชื่อร้าน คำอธิบาย และ URL ติดต่อ
-├── data/products.ts              ข้อมูลตัวอย่างและฟังก์ชันอ่านสินค้า
+├── data/products.ts              อ่านชุดสินค้าที่ดึงจาก CMS ก่อน build
 └── types/product.ts              รูปแบบข้อมูลสินค้าและหมวดหมู่
 public/images/products/           เก็บรูปสินค้าจริง
 ```
@@ -48,8 +48,8 @@ public/images/products/           เก็บรูปสินค้าจร�
 ## ลองแก้ทีละส่วน
 
 1. เปลี่ยนชื่อร้านและคำอธิบายใน `src/config/site.ts`
-2. แก้ข้อมูลสินค้าใน `src/data/products.ts` โดยให้ `id` และ `slug` ไม่ซ้ำกัน
-3. วางรูป เช่น `turtle.jpg` ใน `public/images/products/` แล้วแก้ `images` ของสินค้าเป็น `["/images/products/turtle.jpg"]` ใส่หลายรูปได้
+2. แก้สินค้าในหน้า `/admin/` แล้วบันทึกฉบับร่างและเผยแพร่ ดู [คู่มือ CMS](CMS.md)
+3. อัปโหลดรูปและเรียงรูปหลักผ่านหลังบ้าน รูปเดิมใน `public/images/products/` ยังใช้งานได้
 4. แก้สี `--accent` และ `--background` ใน `src/app/globals.css`
 5. ใส่ URL LINE หรือ Facebook จริงใน `contactUrl` ปุ่มติดต่อจึงจะแสดง
 
@@ -63,7 +63,7 @@ public/images/products/           เก็บรูปสินค้าจร�
 - หน้าเว็บเป็น Server Components โดยค่าเริ่มต้น
 - `ProductGallery` ใช้ `"use client"` เพราะมี `useState` และการกดกรองหมวดหมู่
 - หน้า `[slug]` ใช้ URL เพื่อหาสินค้า และเรียก `notFound()` หากไม่มีสินค้า
-- `getProducts()` และ `getProductBySlug()` แยกจุดอ่านข้อมูลไว้ให้เปลี่ยนเป็นฐานข้อมูลภายหลัง
+- `getProducts()` และ `getProductBySlug()` อ่านชุดเผยแพร่จาก CMS ที่เตรียมไว้ก่อน build
 
 ## ตรวจสอบและรันแบบ production
 
@@ -71,7 +71,7 @@ public/images/products/           เก็บรูปสินค้าจร�
 npm run build
 ```
 
-โปรเจกต์ใช้ static export: ผลลัพธ์อยู่ใน `out/` สำหรับ Cloudflare Workers Static Assets ดูขั้นตอนใน `DEPLOYMENT.md` ส่วนทดสอบระหว่างพัฒนาใช้ `npm run dev`
+โปรเจกต์ใช้ static export: ผลลัพธ์อยู่ใน `out/` ส่วน CMS ใช้ Cloudflare Worker + D1 + R2 ดูขั้นตอนใน `DEPLOYMENT.md` และ `CMS.md` ทดสอบหน้าร้านด้วย `npm run dev` หรือทดสอบหลังบ้านด้วย `npm run cms:dev` หลัง build
 
 ## รายการขอราคา
 
@@ -85,8 +85,8 @@ npm run build
 
 ## ต่อยอดระบบรับออเดอร์
 
-ตอนนี้มีแกลลอรี่และรายการขอราคาสำหรับคัดลอกไป LINE ยังไม่มีการบันทึกออเดอร์เข้าร้าน ฐานข้อมูล ระบบสมาชิก หรือการชำระเงิน
+ตอนนี้มีแกลลอรี่ รายการขอราคาสำหรับคัดลอกไป LINE และ CMS จัดการสินค้าใน D1/R2 ยังไม่มีการบันทึกออเดอร์เข้าร้าน ระบบสมาชิกของลูกค้า หรือการชำระเงิน
 
-หากต้องการรับคำขอผ่านเว็บโดยตรง ขั้นถัดไปคือเพิ่ม API ที่ตรวจข้อมูลบน server และฐานข้อมูล จากนั้นเพิ่มหลังบ้านที่มีการยืนยันตัวตนและตรวจสิทธิ์เพื่อจัดการสินค้าและคำขอ ก่อนพิจารณาระบบมัดจำ
+หากต้องการรับคำขอผ่านเว็บโดยตรง ขั้นถัดไปคือเพิ่ม API และตารางคำขอราคา พร้อมหน้าจัดการคำขอในหลังบ้าน ก่อนพิจารณาระบบมัดจำ
 
 เอกสารอ้างอิง: https://nextjs.org/docs/app/getting-started/installation

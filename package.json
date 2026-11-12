@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/sync-catalog.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-catalog.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cms:dev": "wrangler dev --config wrangler.jsonc --local --port 8787",
+    "cms:migrate:local": "wrangler d1 migrations apply soy-kala-cms --config wrangler.jsonc --local",
+    "cms:migrate:remote": "wrangler d1 migrations apply soy-kala-cms --config wrangler.jsonc --remote",
+    "cms:key:local": "node scripts/admin-key.mjs",
+    "cms:key:remote": "node scripts/admin-key.mjs --remote",
+    "test:cms": "node --test tests/cms.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",
@@ -14,11 +22,15 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261110.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "4.160.0",
+    "miniflare": "5.20261110.0-beta",
+    "esbuild": "0.28.2"
   }
 }

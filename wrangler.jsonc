@@ -1,8 +1,17 @@
 {
-  // Deploy the Next.js static export, without an OpenNext server adapter.
   "name": "soy-kala",
-  "compatibility_date": "2026-11-09",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-11",
   "assets": {
-    "directory": "./out"
-  }
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/media/*", "/admin", "/admin/*"]
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "soy-kala-cms",
+    "database_id": "95b33cd0-6686-4280-930e-51ae52757412",
+    "migrations_dir": "migrations"
+  }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "soy-kala-media" }]
 }
